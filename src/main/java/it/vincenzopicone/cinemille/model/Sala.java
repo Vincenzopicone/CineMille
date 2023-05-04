@@ -3,6 +3,8 @@ package it.vincenzopicone.cinemille.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,6 +42,7 @@ public class Sala {
 	private TipoSala tiposala;
 	@Column(nullable= false)
 	private int capienza;
+	@JsonIgnoreProperties("programmazioni")
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Programmazione> programmazioni;
 	

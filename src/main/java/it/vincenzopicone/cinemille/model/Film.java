@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,6 +38,7 @@ public class Film {
 	private String titolo;
 	@Column(nullable= false)
 	private String descrizione;
+	@JsonIgnoreProperties("programmazioni")
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Programmazione> programmazioni;
 	

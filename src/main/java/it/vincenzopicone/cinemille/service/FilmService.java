@@ -27,6 +27,10 @@ public class FilmService {
 		return (Page<Film>) repo.findAll(page);
 	}
 	
+	public Film findById(Long id) {
+		return repo.findById(id).get();
+		}
+	
 	public Film creaFilm(Film film) {
 		if(repo.existsByTitolo(film.getTitolo())) {
 			throw new EntityExistsException("Esiste un film con questo titolo");

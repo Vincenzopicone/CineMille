@@ -24,6 +24,10 @@ public class SalaService {
 		return (Page<Sala>) repo.findAll(page);
 	}
 	
+	public Sala findById(Long id) {
+		return repo.findById(id).get();
+	}
+	
 	public Sala creaSala(Sala sala) {
 		if(repo.existsByNumerosala(sala.getNumerosala())) {
 			throw new EntityExistsException("Esiste una sala con questo numero");
