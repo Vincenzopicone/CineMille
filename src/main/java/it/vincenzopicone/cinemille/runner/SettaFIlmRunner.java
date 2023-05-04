@@ -8,16 +8,19 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import it.vincenzopicone.cinemille.model.Film;
+import it.vincenzopicone.cinemille.model.Programmazione;
 import it.vincenzopicone.cinemille.model.Sala;
 import it.vincenzopicone.cinemille.model.TipoSala;
 import it.vincenzopicone.cinemille.service.FilmService;
+import it.vincenzopicone.cinemille.service.ProgrammazioneService;
 import it.vincenzopicone.cinemille.service.SalaService;
 
 @Component
-public class SettaFIlmRunner implements ApplicationRunner {
+public class SettaFilmRunner implements ApplicationRunner {
 	
 	@Autowired FilmService filmService;
 	@Autowired SalaService salaService;
+	@Autowired ProgrammazioneService progrService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -70,8 +73,31 @@ public class SettaFIlmRunner implements ApplicationRunner {
 		filmService.creaFilm(F11);
 		Film F12 = new Film("titolo 12", "Descr12");
 		filmService.creaFilm(F12);
+		Programmazione P1 = new Programmazione(F2,S10,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P1);
+		Programmazione P2 = new Programmazione(F1,S11,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P2);
+		Programmazione P3 = new Programmazione(F3,S2,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P3);
+		Programmazione P4 = new Programmazione(F4,S1,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P4);
+		Programmazione P5 = new Programmazione(F5,S3,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P5);
+		Programmazione P6 = new Programmazione(F6,S4,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P6);
+		Programmazione P7 = new Programmazione(F7,S5,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P7);
+		Programmazione P8 = new Programmazione(F8,S6,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P8);
+		Programmazione P9= new Programmazione(F9,S7,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P9);
+		Programmazione P10 = new Programmazione(F10,S8,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P10);
+		Programmazione P11 = new Programmazione(F11,S9,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P11);
+		Programmazione P12 = new Programmazione(F12,S12,LocalDate.of(2023, 5, 1));
+		progrService.creaProgrammazione(P12);
 		
-
 	}
 
 }

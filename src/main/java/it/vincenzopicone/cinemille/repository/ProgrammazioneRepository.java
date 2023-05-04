@@ -7,5 +7,6 @@ import it.vincenzopicone.cinemille.model.Programmazione;
 
 public interface ProgrammazioneRepository
 		extends CrudRepository<Programmazione, Long>, PagingAndSortingRepository<Programmazione, Long> {
+	
 
 }

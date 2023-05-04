@@ -26,11 +26,11 @@ public class ProgrammazioneService {
 	}
 	
 	public Programmazione creaProgrammazione(Programmazione programmazione) {
-		if(repo.existsByNumerosala(programmazione.getNumerosala())) {
-			throw new EntityExistsException("Esiste una sala con questo numero");
-		} else {
+//		if(repo.existsByNumerosala(programmazione.getNumerosala())) {
+//			throw new EntityExistsException("Esiste una sala con questo numero");
+//		} else {
 			repo.save(programmazione);
-		}
+//		}
 		return programmazione;
 	}
 	public Programmazione aggiornaProgrammazione(Programmazione programmazione) {
