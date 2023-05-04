@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
 import it.vincenzopicone.cinemille.model.Programmazione;
 import it.vincenzopicone.cinemille.model.Sala;
 import it.vincenzopicone.cinemille.repository.ProgrammazioneRepository;
@@ -50,5 +51,9 @@ public class ProgrammazioneService {
 //	public List<Programmazione> checkProgrammazioneData (Long id, LocalDate data) {
 //		return (List<Programmazione>) repo.listaDiPrenotazioniConDataeData(id, data);
 //	}
+	
+	public Page<Programmazione> filtraPerRangeData(LocalDate startDate, LocalDate endDate, Pageable pageable){
+		   return repo.ricercaPerData(startDate, endDate, pageable);
+	   }
 
 }

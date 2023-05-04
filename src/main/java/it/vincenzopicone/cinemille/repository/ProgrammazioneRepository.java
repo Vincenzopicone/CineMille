@@ -3,9 +3,12 @@ package it.vincenzopicone.cinemille.repository;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+
 
 import it.vincenzopicone.cinemille.model.Programmazione;
 import it.vincenzopicone.cinemille.model.Sala;
@@ -21,6 +24,9 @@ public interface ProgrammazioneRepository
 	
 //	@query(value = "select count(p) from programmazione p where p.sala.id = :idsala and (:datainizio between p.datauscita and p.datafineprogrammazione)")
 //	public list<programmazione> listadiprenotazionicondataedata(long idsala, localdate datainizio);
+	
+	@Query("SELECT p FROM Programmazione p WHERE p.datauscita BETWEEN :startDate AND :endDate")
+	public Page<Programmazione> ricercaPerData(LocalDate startDate, LocalDate endDate, Pageable pageable);
 	
 
 }

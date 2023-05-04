@@ -106,16 +106,16 @@ public class SettaFilmRunner implements ApplicationRunner {
 //		Programmazione P12 = new Programmazione(F12,S12,LocalDate.of(2023, 5, 1));
 //		progrService.creaProgrammazione(P12);
 		
-		Programmazione P33 = new Programmazione(filmService.findById(1l),salaService.findById(2l),LocalDate.of(2023, 5, 9));
-		progrService.creaProgrammazione(P33);
-		Programmazione P22 = new Programmazione(filmService.findById(4l),salaService.findById(4l),LocalDate.of(2023, 5, 9));
-		progrService.creaProgrammazione(P22);
-		Programmazione P34 = new Programmazione(filmService.findById(3l),salaService.findById(6l),LocalDate.of(2023, 5, 9));
-		progrService.creaProgrammazione(P34);
-		Programmazione P44 = new Programmazione(filmService.findById(5l),salaService.findById(3l),LocalDate.of(2023, 5, 9));
-		progrService.creaProgrammazione(P44);
-		Programmazione P54 = new Programmazione(filmService.findById(9l),salaService.findById(9l),LocalDate.of(2023, 5, 18));
-		progrService.creaProgrammazione(P54);
+//		Programmazione P33 = new Programmazione(filmService.findById(1l),salaService.findById(2l),LocalDate.of(2023, 5, 9));
+//		progrService.creaProgrammazione(P33);
+//		Programmazione P22 = new Programmazione(filmService.findById(4l),salaService.findById(4l),LocalDate.of(2023, 5, 9));
+//		progrService.creaProgrammazione(P22);
+//		Programmazione P34 = new Programmazione(filmService.findById(3l),salaService.findById(6l),LocalDate.of(2023, 5, 9));
+//		progrService.creaProgrammazione(P34);
+//		Programmazione P44 = new Programmazione(filmService.findById(5l),salaService.findById(3l),LocalDate.of(2023, 5, 9));
+//		progrService.creaProgrammazione(P44);
+//		Programmazione P54 = new Programmazione(filmService.findById(9l),salaService.findById(9l),LocalDate.of(2023, 5, 18));
+//		progrService.creaProgrammazione(P54);
 		
 	}
 
