@@ -62,7 +62,7 @@ public class SettaFilmRunner implements ApplicationRunner {
 		Sala S = salaService.findById(i);
 		
 		Programmazione P = new Programmazione();
-		P.setDatauscita(LocalDate.of(2023, 05, 01));
+		P.setDatauscita(LocalDate.of(2023, 5, 8));
 		P.setDatafineprogrammazione(P.getDatauscita().plusWeeks(1));
 		P.setFilm(F);
 		P.setSala(S);
