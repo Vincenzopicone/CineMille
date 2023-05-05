@@ -38,16 +38,15 @@ public class Film {
 	private String titolo;
 	@Column(nullable= false)
 	private String descrizione;
+	@Column(nullable= false)
+	private String regia;
+	@Column(nullable= false)
+	private String genere;
+	@Column(nullable= false)
+	private Integer durata;
+	
 	@JsonIgnoreProperties("programmazioni")
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Programmazione> programmazioni;
 	
-	public Film(String titolo, String descrizione) {
-		super();
-		this.titolo = titolo;
-		this.descrizione = descrizione;
-	}
-	
-	
-
 }
