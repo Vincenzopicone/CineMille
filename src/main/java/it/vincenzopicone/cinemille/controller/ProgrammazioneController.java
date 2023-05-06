@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,7 @@ import it.vincenzopicone.cinemille.service.ProgrammazioneService;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/programmazioni")
 public class ProgrammazioneController {
 	
@@ -36,6 +38,12 @@ public class ProgrammazioneController {
 	@GetMapping("/data")
 	public ResponseEntity<?> getPageData(@RequestParam("start") LocalDate startDate, @RequestParam("end") LocalDate endDate, Pageable pag) {
 		return new ResponseEntity<Page<Programmazione>>(service.filtraPerRangeData(startDate, endDate, pag), HttpStatus.OK);
+	}
+	
+	
+	@PostMapping("/inserisci")
+	public ResponseEntity<?> createNewProgrammazione(@RequestBody Programmazione progr) {
+		return new ResponseEntity<Programmazione>(service.creaProgrammazione(progr), HttpStatus.CREATED);
 	}
 
 }

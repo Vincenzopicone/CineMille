@@ -8,15 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.vincenzopicone.cinemille.model.Film;
-
 import it.vincenzopicone.cinemille.service.FilmService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/film")
 public class FilmController {
 
@@ -29,6 +30,11 @@ public class FilmController {
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getAll(@PathVariable Long id){
 		return new ResponseEntity <Film>(service.findById(id), HttpStatus.OK);
+	}
+	
+	@PostMapping("/inserisci")
+	public ResponseEntity<?> createNewProgrammazione(@RequestBody Film film) {
+		return new ResponseEntity<Film>(service.creaFilm(film), HttpStatus.CREATED);
 	}
 
 }
