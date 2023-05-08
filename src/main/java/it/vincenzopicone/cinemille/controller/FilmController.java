@@ -3,9 +3,12 @@ package it.vincenzopicone.cinemille.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +38,14 @@ public class FilmController {
 	@PostMapping("/inserisci")
 	public ResponseEntity<?> createNewFilm(@RequestBody Film film) {
 		return new ResponseEntity<Film>(service.creaFilm(film), HttpStatus.CREATED);
+	}
+	@GetMapping("/ordine")
+	public ResponseEntity<Page<Film>> getAllPageable(Pageable pageable) {
+		return new ResponseEntity<Page<Film>>(service.getAllFilmPage(pageable), HttpStatus.OK);
+	}
+	@DeleteMapping("/elimina/{id}")
+	public ResponseEntity<String> deleteFilm(@PathVariable Long id){
+		return new ResponseEntity<String>(service.removeFilm(id), HttpStatus.OK);
 	}
 
 }

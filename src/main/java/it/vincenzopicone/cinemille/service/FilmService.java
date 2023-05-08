@@ -40,5 +40,12 @@ public class FilmService {
 		return film;
 		
 	}
+	public String removeFilm(Long id) {
+		if(!repo.existsById(id)) {
+			throw new EntityExistsException("Questo film non esiste!");
+		}
+		repo.deleteById(id);
+		return "Film cancellato!";
+	}
 
 }
