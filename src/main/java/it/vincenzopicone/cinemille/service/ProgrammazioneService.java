@@ -34,11 +34,18 @@ public class ProgrammazioneService {
 //		List<Programmazione> listaPrenotazioneData = checkProgrammazioneData(programmazione.getSala().getId(), programmazione.getDatauscita());
 
 		if(listaP.size() > 0) {
-			log.info("La sala" + programmazione.getSala().getNumerosala() +" è già stata assegnata il giorno " + programmazione.getDatauscita());
+			throw new EntityExistsException("Questa sala è già stata assegnata");
 		} else {
 			repo.save(programmazione);
 		}
 		return programmazione;
+	}
+	public String removeProgrammazione(Long id) {
+		if(!repo.existsById(id)) {
+			throw new EntityExistsException("Questa programamzione non esiste!");
+		}
+		repo.deleteById(id);
+		return "Programmazione cancellata!";
 	}
 	public Programmazione aggiornaProgrammazione(Programmazione programmazione) {
 			repo.save(programmazione);

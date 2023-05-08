@@ -29,11 +29,11 @@ public class FilmController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getAll(@PathVariable Long id){
-		return new ResponseEntity <Film>(service.findById(id), HttpStatus.OK);
+		return new ResponseEntity<Film>(service.findById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping("/inserisci")
-	public ResponseEntity<?> createNewProgrammazione(@RequestBody Film film) {
+	public ResponseEntity<?> createNewFilm(@RequestBody Film film) {
 		return new ResponseEntity<Film>(service.creaFilm(film), HttpStatus.CREATED);
 	}
 

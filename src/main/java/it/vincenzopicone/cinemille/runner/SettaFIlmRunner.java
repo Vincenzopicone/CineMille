@@ -51,19 +51,19 @@ public class SettaFilmRunner implements ApplicationRunner {
 //			salaService.creaSala(S10);
 //			salaService.creaSala(S11);
 //			salaService.creaSala(S12);
-//			
+			
 //	for(int i = 0; i < 30;i++) {
 //		Film F = filmConf.newFilmFake();
 //		filmService.creaFilm(F);	
 //	}
-	
+//	
 //	for(Long i = 1l; i < 13; i++) {
-//		Film F = filmService.findById(i+9);
+//		Film F = filmService.findById(i+7);
 //		Sala S = salaService.findById(i);
 //		
 //		Programmazione P = new Programmazione();
-//		P.setDatauscita(LocalDate.of(2023, 5, 17));
-//		P.setDatafineprogrammazione(P.getDatauscita().plusWeeks(1));
+//		P.setDatauscita(LocalDate.of(2023, 6, 4));
+//		P.setDatafineprogrammazione(P.getDatauscita().plusDays(6));
 //		P.setFilm(F);
 //		P.setSala(S);
 //		progrService.creaProgrammazione(P);

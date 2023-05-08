@@ -48,13 +48,4 @@ public class Programmazione {
 	@Column(nullable= false)
 	private LocalDate datafineprogrammazione;
 	
-	public Programmazione(Film film, Sala sala, LocalDate datauscita) {
-		this.film = film;
-		this.sala = sala;
-		this.datauscita = datauscita;
-		this.datafineprogrammazione = datauscita.plusWeeks(1);
-	}
-	
-	
-
 }
