@@ -1,6 +1,7 @@
 package it.vincenzopicone.cinemille.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import it.vincenzopicone.cinemille.model.Programmazione;
 import it.vincenzopicone.cinemille.model.Sala;
 import it.vincenzopicone.cinemille.repository.ProgrammazioneRepository;
-import it.vincenzopicone.cinemille.repository.SalaRepository;
+
 import jakarta.persistence.EntityExistsException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,18 +32,20 @@ public class ProgrammazioneService {
 	
 	public Programmazione creaProgrammazione(Programmazione programmazione) {
 		List<Programmazione> listaP = checkProgrammazione(programmazione.getSala(), programmazione.getDatauscita());
-//		List<Programmazione> listaPrenotazioneData = checkProgrammazioneData(programmazione.getSala().getId(), programmazione.getDatauscita());
 
 		if(listaP.size() > 0) {
 			throw new EntityExistsException("Questa sala è già stata assegnata");
 		} else {
+			programmazione.setPrimo(LocalTime.of(19, 00));
+			programmazione.setSecondo(programmazione.getPrimo().plusMinutes(programmazione.getFilm().getDurata() + 15));
+			programmazione.setTerzo(programmazione.getSecondo().plusMinutes(programmazione.getFilm().getDurata() + 15));
 			repo.save(programmazione);
 		}
 		return programmazione;
 	}
 	public String removeProgrammazione(Long id) {
 		if(!repo.existsById(id)) {
-			throw new EntityExistsException("Questa programamzione non esiste!");
+			throw new EntityExistsException("Questa programmazione non esiste!");
 		}
 		repo.deleteById(id);
 		return "Programmazione cancellata!";
@@ -55,10 +58,7 @@ public class ProgrammazioneService {
 	public List<Programmazione> checkProgrammazione (Sala sala, LocalDate data) {
 		return (List<Programmazione>) repo.listaDiPrenotazioniConData(sala, data);
 	}
-//	public List<Programmazione> checkProgrammazioneData (Long id, LocalDate data) {
-//		return (List<Programmazione>) repo.listaDiPrenotazioniConDataeData(id, data);
-//	}
-	
+
 	public Page<Programmazione> filtraPerRangeData(LocalDate startDate, LocalDate endDate, Pageable pageable){
 		   return repo.ricercaPerData(startDate, endDate, pageable);
 	   }

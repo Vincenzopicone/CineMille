@@ -21,7 +21,7 @@ public class FilmConfiguration {
 				.regia(fake.book().author())
 				.descrizione(fake.lorem().characters(25, 50))
 				.genere(fake.book().genre())
-				.durata(fake.number().numberBetween(100, 300))
+				.durata(fake.number().numberBetween(90, 150))
 				.titolo(fake.book().title())
 				.build();				
 	}

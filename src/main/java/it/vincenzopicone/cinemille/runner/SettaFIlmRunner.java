@@ -1,6 +1,7 @@
 package it.vincenzopicone.cinemille.runner;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -8,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import it.vincenzopicone.cinemille.configuration.FilmConfiguration;
+import it.vincenzopicone.cinemille.configuration.ProgrammazioneConfiguration;
 import it.vincenzopicone.cinemille.model.Film;
 import it.vincenzopicone.cinemille.model.Programmazione;
 import it.vincenzopicone.cinemille.model.Sala;
@@ -23,6 +25,7 @@ public class SettaFilmRunner implements ApplicationRunner {
 	@Autowired SalaService salaService;
 	@Autowired ProgrammazioneService progrService;
 	@Autowired FilmConfiguration filmConf; 
+	@Autowired ProgrammazioneConfiguration progrConf;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -58,19 +61,12 @@ public class SettaFilmRunner implements ApplicationRunner {
 //	}
 //	
 	for(Long i = 1l; i < 13; i++) {
-		Film F = filmService.findById(i+6);
-		Sala S = salaService.findById(i);
-		
-		Programmazione P = new Programmazione();
-		P.setDatauscita(LocalDate.of(2023, 5, 28));
-		P.setDatafineprogrammazione(P.getDatauscita().plusDays(6));
-		P.setFilm(F);
-		P.setSala(S);
+	    Programmazione P = progrConf.programmazioneFake(i, 3l, LocalDate.of(2023, 6, 4));
 		progrService.creaProgrammazione(P);
 	}
-	
-
-		
+			
 	}
+	
+	
 
 }
