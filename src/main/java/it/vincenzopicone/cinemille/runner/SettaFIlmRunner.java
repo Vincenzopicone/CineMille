@@ -60,10 +60,7 @@ public class SettaFilmRunner implements ApplicationRunner {
 //		filmService.creaFilm(F);	
 //	}
 //	
-	for(Long i = 1l; i < 13; i++) {
-	    Programmazione P = progrConf.programmazioneFake(i, 3l, LocalDate.of(2023, 6, 4));
-		progrService.creaProgrammazione(P);
-	}
+
 			
 	}
 	
